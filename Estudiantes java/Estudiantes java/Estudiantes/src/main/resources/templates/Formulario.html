@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Curso</title>
+</head>
+<body>
+<h1 th:if="${curso.idCursos == null}">Crear Nuevo Curso</h1>
+<h1 th:if="${curso.idCursos != null}">Editar Curso</h1>
+
+<form th:action="@{/cursos/guardar}" th:object="${curso}" method="post">
+  <input type="hidden" th:field="*{idCursos}">
+
+  <label>Nombre del Curso</label>
+  <input type="text" th:field="*{nombre_curso}" placeholder="Nombre del curso" required><br><br>
+
+  <label>ID del Profesor</label>
+  <input type="text" th:field="*{id_profesor}" placeholder="ID del profesor" required><br><br>
+
+  <button type="submit">Guardar</button>
+</form>
+
+<a href="/cursos">Volver a la lista de cursos</a>
+</body>
+</html>
+
